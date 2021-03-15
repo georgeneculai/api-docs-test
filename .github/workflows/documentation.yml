@@ -8,6 +8,10 @@ on:
   pull_request:
     branches: [ main ]
 
+env:
+  # Prepare an environment variable based on the secret API key
+  api_key: ${{ secrets.DOCUMENTATION_API_KEY }}
+
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "curl"
@@ -20,11 +24,18 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job. There is one step for each specific YAML.
     steps:
       - name: curl async demo-1 as demo-1-george
-        env:
-          # Prepare an environment variable based on the secret API key
-          api_key: ${{ secrets.DOCUMENTATION_API_KEY }}
         # Using curl action script
         uses: wei/curl@v1
         # cURL arguments with API key environment variable, source YAML, API type and destination alias
         with:
           args: "--verbose --location --request POST 'http://18.208.186.68/webhooks/generate' --header \"Authorization:Basic\\ $api_key\" --header 'Content-Type:application/json' --data-raw '{\\\"api_spec_file_path\\\":\\\"https://raw.githubusercontent.com/georgeneculai/api-docs-test/main/async/demo-1.yml\\\",\\\"api_type\\\":\\\"async\\\",\\\"repo_alias\\\":\\\"demo-1-george\\\"}'"
+
+      - name: curl async demo-2 as demo-2-george
+        uses: wei/curl@v1
+        with:
+          args: "--verbose --location --request POST 'http://18.208.186.68/webhooks/generate' --header \"Authorization:Basic\\ $api_key\" --header 'Content-Type:application/json' --data-raw '{\\\"api_spec_file_path\\\":\\\"https://raw.githubusercontent.com/georgeneculai/api-docs-test/main/async/demo-2.yml\\\",\\\"api_type\\\":\\\"async\\\",\\\"repo_alias\\\":\\\"demo-2-george\\\"}'"
+
+      - name: curl async demo-3 as demo-3-george
+        uses: wei/curl@v1
+        with:
+          args: "--verbose --location --request POST 'http://18.208.186.68/webhooks/generate' --header \"Authorization:Basic\\ $api_key\" --header 'Content-Type:application/json' --data-raw '{\\\"api_spec_file_path\\\":\\\"https://raw.githubusercontent.com/georgeneculai/api-docs-test/main/async/demo-3.yml\\\",\\\"api_type\\\":\\\"async\\\",\\\"repo_alias\\\":\\\"demo-3-george\\\"}'"
