@@ -1,0 +1,30 @@
+name: Documentation
+
+# Controls when the action will run.
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "curl"
+  curl:
+    name: Trigger API documentation refresh
+
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job. There is one step for each specific YAML.
+    steps:
+      - name: curl async demo-1 as demo-1-george
+        env:
+          # Prepare an environment variable based on the secret API key
+          api_key: ${{ secrets.DOCUMENTATION_API_KEY }}
+        # Using curl action script
+        uses: wei/curl@v1
+        # cURL arguments with API key environment variable, source YAML, API type and destination alias
+        with:
+          args: --location --request POST 'http://localhost:8080/webhooks/generate' --header "Authorization: Basic $api_key" --header 'Content-Type: application/json' --data-raw'{ "api_spec_file_path": "https://github.com/georgeneculai/api-docs-test/blob/main/async/demo-1.yml", "api_type": "async", "repo_alias": "demo-1-george" }'
