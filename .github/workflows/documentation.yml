@@ -27,4 +27,4 @@ jobs:
         uses: wei/curl@v1
         # cURL arguments with API key environment variable, source YAML, API type and destination alias
         with:
-          args: "--location --request POST 'http://18.208.186.68/webhooks/generate' --header 'Authorization: Basic $api_key' --header 'Content-Type: application/json' --data-raw '{ \"api_spec_file_path\": \"https://github.com/georgeneculai/api-docs-test/blob/main/async/demo-1.yml\", \"api_type\": \"async\", \"repo_alias\" : \"demo-1-george\" }'"
+          args: "--location --request POST 'http://18.208.186.68/webhooks/generate' --header \"Authorization: Basic $api_key\" --header 'Content-Type: application/json' --data-raw '{ \"api_spec_file_path\": \"https://github.com/georgeneculai/api-docs-test/blob/main/async/demo-1.yml\", \"api_type\": \"async\", \"repo_alias\" : \"demo-1-george\" }'"
