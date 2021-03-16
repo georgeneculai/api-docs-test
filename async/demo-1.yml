@@ -1,6 +1,6 @@
 asyncapi: '2.0.0'
 info:
-  title: Streetlights API
+  title: George's API
   version: '1.0.0'
   description: |
     The Smartylighting Streetlights API allows you
