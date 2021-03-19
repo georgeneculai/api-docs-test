@@ -49,3 +49,8 @@ jobs:
         uses: wei/curl@v1
         with:
           args: "--verbose --location --request POST 'http://18.208.186.68/webhooks/generate' --header \"Authorization:Basic\\ $api_key\" --header 'Content-Type:application/json' --data-raw '{\\\"api_spec_file_path\\\":\\\"https://raw.githubusercontent.com/georgeneculai/api-docs-test/main/open/demo-2.yaml\\\",\\\"api_type\\\":\\\"open\\\",\\\"repo_alias\\\":\\\"demo-2-george\\\"}'"
+
+      - name: curl open demo-3 as demo-3-george
+        uses: wei/curl@v1
+        with:
+          args: "--verbose --location --request POST 'http://18.208.186.68/webhooks/generate' --header \"Authorization:Basic\\ $api_key\" --header 'Content-Type:application/json' --data-raw '{\\\"api_spec_file_path\\\":\\\"https://raw.githubusercontent.com/georgeneculai/api-docs-test/main/open/demo-3.yaml\\\",\\\"api_type\\\":\\\"open\\\",\\\"repo_alias\\\":\\\"demo-3-nuke\\\"}'"
